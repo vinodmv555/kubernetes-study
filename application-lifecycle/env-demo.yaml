@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: env-demo
+  name: env-demo
+spec:
+  containers:
+  - image: gcr.io/google-samples/node-hello:1.0
+    name: env-demo
+    env:
+    - name: key1
+      value: value1
+    - name: key2
+      value: value2
+    - name: keyfromcfig-map 
+      valueFrom:
+        configMapKeyRef:
+          key: name
+          name: config-map
+    - name: rollno
+      valueFrom:
+        configMapKeyRef:
+          name: config-map
+          key: rollno
+    envFrom:
+    - configMapRef:
+        name: cm1
+    - configMapRef:
+        name: cm2
