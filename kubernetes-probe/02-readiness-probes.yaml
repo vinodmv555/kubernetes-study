@@ -38,6 +38,3 @@ spec:
           timeoutSeconds: 4 # max waiting for result 
           failureThreshold: 2 # no of failiure to mark pod as failiure
           successThreshold: 1 # no of success to make pod as success
-
-
-

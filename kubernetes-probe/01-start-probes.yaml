@@ -28,6 +28,3 @@ spec:
               - /usr/share/nginx/html/index.html
           periodSeconds: 10
           failureThreshold: 3
-
-
-
