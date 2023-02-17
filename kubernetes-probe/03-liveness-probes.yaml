@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1 
+kind: Deployment 
+metadata:
+  name: liveness-probe
+  labels:
+    env: dev
+    app: probe 
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      pod: startup  
+  template:
+    metadata:
+      labels: 
+        pod: startup
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        startupProbe: 
+          exec:
+            command:
+              - cat 
+              - /usr/share/nginx/html/index.html
+          periodSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+              - cat
+              - /usr/share/nginx/html/index.html
+          initialDelaySeconds: 10 # Initial Delay 
+          periodSeconds: 10 # frequency of readiness chek
+          timeoutSeconds: 4 # max waiting for result 
+          failureThreshold: 2 # no of failiure to mark pod as failiure
+          successThreshold: 1 # no of success to make pod as success
+        livenessProbe:
+          exec:
+            command:
+              - cat
+              - /usr/share/nginx/html/index.html
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 4
+          failureThreshold: 6
+          successThreshold: 1

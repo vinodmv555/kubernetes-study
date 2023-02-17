@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1 
+kind: Deployment 
+metadata:
+  name: startup-probe
+  labels:
+    env: dev
+    app: probe 
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      pod: startup  
+  template:
+    metadata:
+      labels: 
+        pod: startup
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        startupProbe: 
+          exec:
+            command:
+              - cat 
+              - /usr/share/nginx/html/index.html
+          periodSeconds: 10
+          failureThreshold: 3
+
+
+
