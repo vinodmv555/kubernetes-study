@@ -8,7 +8,7 @@ metadata:
 spec:
   volumes:
   - configMap:
-      name: cm-from-file
+      name: test-cm-from-a-file
     name: vol1
   containers:
   - name: test-cm

@@ -1,2 +1,2 @@
 kubectl create cm cm-env-debian-literal --from-literal=command-deb=/bin/echo --from-literal=msg-deb=Hello debian
-kubectl create cm cm-env-ubuntu-file --from-file=09-01-fil1.txt
+kubectl create cm cm-env-ubuntu-file --from-file=05-01-fil1.txt

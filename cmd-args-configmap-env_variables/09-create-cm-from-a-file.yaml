@@ -6,4 +6,6 @@ metadata:
   labels:
     prupose: create-cm-from-a-file
 data:
-  09-01-fil1.txt: ""
+  09-01-fil1.txt: |
+    key4: value4
+    key5: value5
