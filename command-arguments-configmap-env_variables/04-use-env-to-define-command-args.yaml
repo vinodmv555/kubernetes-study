@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-to-cmd-arg
+  labels:
+    purpose: assing-env-values-to-cmd-arg
+spec:
+  containers:
+  - name: image-for-debian
+    image: debian
+    command: ["$(command-deb)"]
+    args: ["$(msg-deb)"]
+    env:
+      - name: command-deb
+        value: "/bin/echo"
+      - name: msg-deb
+        value: "Hello debian"
+  - name: image-for-ubuntu
+    image: ubuntu
+    command: ["$(command-ubuntu)"]
+    args: ["$(msg-ubuntu)"]
+    env:
+      - name: command-ubuntu
+        value: "/bin/echo"
+      - name: msg-ubuntu
+        value: "Hello Ubuntu"

@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-to-define-args
+  labels:
+    purpose: env-to-define-args
+spec:
+  containers:
+  - name: demo-container-env-arg
+    image: debian
+    command: ["/bin/echo"]
+    args: ["$(message)"]
+    env:
+      - name: message
+        value: "Hello world"
