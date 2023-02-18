@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: inject-cm-to-pod
+  labels:
+    purpose: diffrent-ways-to-inject-cm-to-pod
+spec:
+  containers:
+  - name: test-cm-env
+    image: nginx
+    env:
+      - name: key1
+        value: val1
+      - name: key2
+        value: val2
+      - name: valuefromcm
+        valueFrom: 
+          configMapKeyRef:
+            key: msg-deb
+            name: cm-env-debian-literal
+      - name: command
+        valueFrom:
+          configMapKeyRef:
+            key: command-deb
+            name: cm-env-debian-literal
+    envFrom:
+    - configMapRef:
+        name: cm-env-ubuntu-file
+    - configMapRef:
+        name: dec-cm-ubuntu-deb

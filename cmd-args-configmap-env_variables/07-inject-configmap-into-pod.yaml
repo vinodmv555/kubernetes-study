@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: inject-cm-to-pod
+  labels:
+    purpose: test-injection-cm-to-pod
+spec:
+  containers:
+  - name: command-debian
+    image: debian
+    command: ["$(command-deb)"]
+    args: ["$(msg-deb)"]
+    envFrom:
+      - configMapRef:
+          name: cm-env-debian-literal

@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dec-cm-ubuntu-deb
+data:
+  command-deb: "/bin/echo"
+  msg-deb: "Hello debian"
+  command-ubuntu: "/bin/echo"
+  msg-ubuntu: "Hello Ubuntu"
