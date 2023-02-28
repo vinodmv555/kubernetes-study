@@ -1,0 +1,18 @@
+# image name --> Cusotm webapp
+# image version --> nginx:1.14.2
+# Ports on 80 
+#---------------------------------------------------------------#
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-ownimage
+  labels:
+    env: dev 
+    department: HR 
+spec:
+  containers:
+  - name: custom-webapp
+    image: vinodmv555/myimage
+    ports:
+    - containerPort: 85
