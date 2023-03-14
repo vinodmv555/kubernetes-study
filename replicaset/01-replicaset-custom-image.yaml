@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-01
+  labels:
+    env: dev
+    type: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      appname: webapp
+  template:
+    spec:
+      containers:
+      - name: myimage
+        image: vinodmv555/myimage
+    metadata:
+      labels:
+        appname: webapp

@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-headless-service
+  labels:
+    env: dev
+spec:
+  clusterIP: None
+  selector:
+    app: demo-deploy
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8081
